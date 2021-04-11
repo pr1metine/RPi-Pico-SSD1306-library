@@ -26,7 +26,7 @@ int main() {
         oled.drawString(0, 0, "Raspberry Pico");
         oled.drawString(0, 10, "Oled Example");
         oled.drawString(0, 20, "Have fun!");
-        oled.drawProgressBar(0, oled.getHeight()-10, oled.getWidth(), 10, rand() % 100 + 1);
+//        oled.drawProgressBar(0, oled.getHeight()-10, oled.getWidth(), 10, rand() % 100 + 1);
         oled.display();                     //Send buffer to the screen
     }
     return 0;
