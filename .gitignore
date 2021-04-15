@@ -1,3 +1,3 @@
-example/build/
-example/cmake-build-debug-embedded/
-example/.idea
+/example/build/
+/example/cmake-build*
+.idea
