@@ -1,5 +1,9 @@
 #include "SSD1306.hpp"
 
+
+SSD1306::SSD1306(const uint16_t DevAddr, enum dimensions dimension, i2c_inst_t *i2c): SSD1306(DevAddr, 128, 64, i2c){
+    this->dimension = dimension;
+}
 /*!
     @brief  Constructor for I2C-interfaced OLED display.
     @param  DevAddr
@@ -12,7 +16,7 @@
             Pointer to an existing i2c instance.
     @return SSD1306 object.
 */
-SSD1306::SSD1306(uint16_t const DevAddr, uint8_t const width, uint8_t const height, i2c_inst_t * i2c) : DevAddr(DevAddr), width(width), height(height), i2c(i2c) 
+SSD1306::SSD1306(uint16_t const DevAddr, uint8_t const width, uint8_t const height, i2c_inst_t * i2c) : DevAddr(DevAddr), width(width), height(height), i2c(i2c), dimension(dimensions::D128x64)
 {
 	this->buffer = new unsigned char[this->width*this->height/8];
 	this->sendCommand(SSD1306_DISPLAYOFF);
@@ -129,6 +133,10 @@ void SSD1306::setContrast(uint8_t Contrast)
  */
 void SSD1306::drawPixel(int16_t x, int16_t y, colors Color)
 {
+    if (this->dimension == dimensions::D128x32) {
+        y = y + y + 1;
+    }
+
 	 if ((x < 0) || (x >= this->width) || (y < 0) || (y >= this->height))
 		 return;
 
@@ -190,6 +198,10 @@ void SSD1306::sendData(uint8_t* buffer, size_t buff_size)
  */
 uint8_t SSD1306::getHeight()
 {
+    if (dimension = D128x32) {
+        return 32;
+    }
+
 	return this->height;
 }
 

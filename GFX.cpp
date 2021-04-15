@@ -1,5 +1,6 @@
 #include "GFX.hpp"
 
+GFX::GFX(const uint16_t DevAddr, enum dimensions dimension, i2c_inst_t *i2c) : SSD1306(DevAddr, dimension, i2c) {}
 
 GFX::GFX(uint16_t const DevAddr, uint8_t const width, uint8_t const height, i2c_inst_t * i2c) : SSD1306(DevAddr, width, height, i2c) {};
 
@@ -126,4 +127,5 @@ void GFX::writeLine(int x_start, int y_start, int x_end, int y_end, colors color
 	        }
 	    }
 }
+
 

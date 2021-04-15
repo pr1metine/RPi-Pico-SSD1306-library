@@ -38,7 +38,10 @@ enum class colors {
 	INVERSE
 };
 
-
+enum dimensions {
+    D128x64,
+    D128x32
+};
 
 class SSD1306 {
 	protected:
@@ -46,6 +49,7 @@ class SSD1306 {
 		i2c_inst_t * i2c;
 		uint8_t width;
 		uint8_t height;
+		dimensions dimension;
 		
 		unsigned char * buffer;
 
@@ -54,6 +58,7 @@ class SSD1306 {
 
 	public:
 		SSD1306(uint16_t const DevAddr, uint8_t const width, uint8_t const height, i2c_inst_t * i2c);
+		SSD1306(uint16_t const DevAddr, enum dimensions dimension, i2c_inst_t * i2c);
 		~SSD1306();
 
 		void displayON(uint8_t On);

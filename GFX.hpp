@@ -18,6 +18,7 @@ class GFX : public SSD1306 {
 
     public:
         GFX(uint16_t const DevAddr, uint8_t const width, uint8_t const height, i2c_inst_t * i2c);
+        GFX(uint16_t const DevAddr, enum dimensions dimension, i2c_inst_t * i2c);
 
         void drawChar(int x, int y, char chr, colors color = colors::WHITE);
         void drawString(int x, int y, std::string str, colors color = colors::WHITE);
